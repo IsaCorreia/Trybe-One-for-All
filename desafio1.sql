@@ -2,17 +2,16 @@
 
 DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
-USE SpotifyClone;
 
 -- Criando Tabelas
 
-CREATE TABLE IF NOT EXISTS planos (
+CREATE TABLE IF NOT EXISTS SpotifyClone.planos (
     plano_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     plano VARCHAR(15) NOT NULL,
     valor_plano FLOAT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS usuarios (
+CREATE TABLE IF NOT EXISTS SpotifyClone.usuarios (
     usuario_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL,
     idade INT,
@@ -22,12 +21,12 @@ CREATE TABLE IF NOT EXISTS usuarios (
     data_assinatura DATETIME
 );
 
-CREATE TABLE IF NOT EXISTS artistas (
+CREATE TABLE IF NOT EXISTS SpotifyClone.artistas (
     artista_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     artista VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS artistas_seguidos(
+CREATE TABLE IF NOT EXISTS SpotifyClone.artistas_seguidos(
     artista_id INT NOT NULL,
     usuario_id INT NOT NULL,
     CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS artistas_seguidos(
         REFERENCES usuarios (usuario_id)
 );
 
-CREATE TABLE IF NOT EXISTS albums (
+CREATE TABLE IF NOT EXISTS SpotifyClone.albums (
     album_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     album VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
@@ -46,7 +45,7 @@ CREATE TABLE IF NOT EXISTS albums (
     ano_lancamento YEAR NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS musicas (
+CREATE TABLE IF NOT EXISTS SpotifyClone.musicas (
     musica_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     musica VARCHAR(50) NOT NULL,
     album_id INT NOT NULL,
@@ -55,7 +54,7 @@ CREATE TABLE IF NOT EXISTS musicas (
     duracao_segundos INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS historico (
+CREATE TABLE IF NOT EXISTS SpotifyClone.historico (
     usuario_id INT NOT NULL,
     musica_id INT NOT NULL,
     data_reproducao DATETIME NOT NULL,
@@ -179,7 +178,7 @@ VALUES
 ("Baby", 10, 136),
 ("You Make Me Feel So..", 10, 83);
 
-INSERT INTO historico(usuario_id, musica_id, data_reproducao)
+INSERT INTO SpotifyClone.historico(usuario_id, musica_id, data_reproducao)
 VALUES
 (1, 30, "2020-02-28 10:45:55"),
 (1, 25, "2020-05-02 05:30:35"),
